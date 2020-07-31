@@ -51,11 +51,11 @@ public class PedometerFragment extends Fragment implements SensorEventListener{
         view = inflater.inflate(R.layout.activity_main, container, false);
 
         //센서 연결[걸음수 센서를 이용한 흔듬 감지]
-        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
         stepCountSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
 
         if (stepCountSensor == null) {
-            Toast.makeText(this, "No Step Detect Sensor", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"No Step Detect Sensor", Toast.LENGTH_SHORT).show();
         }
 
         while(0<=mSteps) {
@@ -89,6 +89,11 @@ public class PedometerFragment extends Fragment implements SensorEventListener{
         if(mSteps>=10000){
             //10000걸음에서의 이미지 출력하는 것 추가
         }
+        TextView textView;
+        textView = (TextView)findViewById(R.id.textView2);
+//findView가 됐다 안됐다 한다.....
+        Log.d(this.getClass().getName(), (String) textView.getText());
+        textView.setText(mSteps+"걸음 걸었어");
 //Toast 문제 해결하고 나서 각각 마다 Toast 넣을 수 있으면 좋겠당
         return view;
     }
@@ -96,19 +101,21 @@ public class PedometerFragment extends Fragment implements SensorEventListener{
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_STEP_COUNTER){
+        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
 
-            //stepcountsenersor는 앱이 꺼지더라도 초기화 되지않는다. 그러므로 우리는 초기값을 가지고 있어야한다.
             if (mCounterSteps < 1) {
                 // initial value
                 mCounterSteps = (int) event.values[0];
             }
             mSteps = (int) event.values[0];
 
-            Log.i("log: ", "New step detected by STEP_COUNTER sensor. Total step count: " + mSteps );
+
+
+            Log.i("log: ", "New step detected by STEP_COUNTER sensor. Total step count: " + mSteps);
         }
 
     }
+
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
