@@ -7,11 +7,10 @@
     android:orientation="vertical"
     android:weightSum="9"
     >
-    <!-- A RecyclerView with some commonly used attributes -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="50dp"
+        android:background="@null"
 
+        />
 </LinearLayout>
