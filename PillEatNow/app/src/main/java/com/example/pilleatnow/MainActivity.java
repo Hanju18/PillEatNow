@@ -5,17 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    RelativeLayout start;
+    LinearLayout start;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("MainActivity", "OnCreate");
-
         start= findViewById(R.id.start);
         start.setClickable(true);
         start.setOnClickListener(new View.OnClickListener() {

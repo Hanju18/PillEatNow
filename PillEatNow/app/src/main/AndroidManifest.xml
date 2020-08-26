@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".CalendarActivity">
         </activity>
+        <activity android:name=".MyAdapter">
+        </activity>
     </application>
 
 </manifest>
