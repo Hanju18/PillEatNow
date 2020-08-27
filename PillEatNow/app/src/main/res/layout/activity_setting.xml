@@ -25,7 +25,7 @@
             android:id="@+id/Menu_Calendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu_calendarclicked"
+            android:src="@drawable/menu_calendar"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
         <ImageView
@@ -39,7 +39,7 @@
             android:id="@+id/Menu_Setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu_setting"
+            android:src="@drawable/menu_settingclicked"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
     </LinearLayout>
