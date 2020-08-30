@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:weightSum="8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:clickable="true"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,31 +20,31 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/Menu_Main"
+            android:id="@+id/menu_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_main"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
         <ImageView
-            android:id="@+id/Menu_Calendar"
+            android:id="@+id/menu_calendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_calendar"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
         <ImageView
-            android:id="@+id/Menu_Pill"
+            android:id="@+id/menu_pill"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu_pillclicked"
+            android:src="@drawable/menu_pill"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
         <ImageView
-            android:id="@+id/Menu_Setting"
+            android:id="@+id/menu_setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu_setting"
+            android:src="@drawable/menu_settingclicked"
             android:layout_weight="0.25"
             android:layout_gravity="center"/>
     </LinearLayout>

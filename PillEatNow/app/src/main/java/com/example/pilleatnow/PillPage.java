@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-public class MainPage extends AppCompatActivity {
+public class PillPage extends AppCompatActivity {
     private ImageView menu_main, menu_calendar, menu_pill, menu_setting;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -21,22 +21,22 @@ public class MainPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.page_main);
-        Log.d("MainPage", "OnCreate");
+        setContentView(R.layout.page_pill);
+        Log.d("PillPage", "OnCreate");
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(myDataset);
-        recyclerView.setAdapter(mAdapter);
+//        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
+//        mAdapter = new MyAdapter(myDataset);
+//        recyclerView.setAdapter(mAdapter);
 
         menu_main=findViewById(R.id.menu_main);
         menu_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainPage", "Menu_MainClicked");
-                Intent intent = new Intent(MainPage.this, MainPage.class);
+                Log.d("PillPage", "Menu_MainClicked");
+                Intent intent = new Intent(PillPage.this, MainPage.class);
                 startActivity(intent);
             }
         });
@@ -45,8 +45,8 @@ public class MainPage extends AppCompatActivity {
         menu_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainPage", "Menu_CalendarClicked");
-                Intent intent = new Intent(MainPage.this, CalendarPage.class);
+                Log.d("PillPage", "Menu_CalendarClicked");
+                Intent intent = new Intent(PillPage.this, CalendarPage.class);
                 startActivity(intent);
             }
         });
@@ -54,8 +54,8 @@ public class MainPage extends AppCompatActivity {
         menu_pill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainPage", "Menu_PillClicked");
-                Intent intent = new Intent(MainPage.this, PillPage.class);
+                Log.d("PillPage", "Menu_PillClicked");
+                Intent intent = new Intent(PillPage.this, PillPage.class);
                 startActivity(intent);
             }
         });
@@ -63,35 +63,15 @@ public class MainPage extends AppCompatActivity {
         menu_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainPage", "Menu_SettingClicked");
-                Intent intent = new Intent(MainPage.this, SettingPage.class);
+                Log.d("PillPage", "Menu_SettingClicked");
+                Intent intent = new Intent(PillPage.this, SettingPage.class);
                 startActivity(intent);
             }
         });
 
-
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder alert= new AlertDialog.Builder(this);
-        alert.setMessage("정말로 종료하시겠습니까?");
-
-        alert.setPositiveButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        alert.setNegativeButton("종료", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishAffinity();
-            }
-        });
-        alert.setTitle("PillEatNow 종료");
-        AlertDialog alert1=alert.create();
-        alert1.show();
+    public void addPill() {
+        
     }
 }

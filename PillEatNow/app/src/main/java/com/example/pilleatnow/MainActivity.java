@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout start;
+    public static UserData userData=new UserData();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

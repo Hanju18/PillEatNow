@@ -23,33 +23,37 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/Menu_Main"
+            android:id="@+id/menu_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_mainclicked"
             android:layout_weight="0.25"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:clickable="true"/>
         <ImageView
-            android:id="@+id/Menu_Calendar"
+            android:id="@+id/menu_calendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_calendar"
             android:layout_weight="0.25"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:clickable="true"/>
         <ImageView
-            android:id="@+id/Menu_Pill"
+            android:id="@+id/menu_pill"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_pill"
             android:layout_weight="0.25"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:clickable="true"/>
         <ImageView
-            android:id="@+id/Menu_Setting"
+            android:id="@+id/menu_setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_setting"
             android:layout_weight="0.25"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:clickable="true"/>
     </LinearLayout>
 
 </LinearLayout>
