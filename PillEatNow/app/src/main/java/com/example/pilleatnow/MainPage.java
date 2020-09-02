@@ -11,12 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.List;
+
 public class MainPage extends AppCompatActivity {
     private ImageView menu_main, menu_calendar, menu_pill, menu_setting;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView1, recyclerView2, recyclerView3;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private String[] myDataset={"약1", "약2", "약3"};
+    private RecyclerView.LayoutManager layoutManager1, layoutManager2, layoutManager3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,33 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.page_main);
         Log.d("MainPage", "OnCreate");
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(myDataset);
-        recyclerView.setAdapter(mAdapter);
+        UserData userData = (UserData) getApplication();
+        if(!userData.added){
+            userData.addPillData(new PillData(R.drawable.pill1, "약1", 1));
+            userData.addPillData(new PillData(R.drawable.pill2, "약2", 2));
+            userData.addPillData(new PillData(R.drawable.pill3, "약3", 3));
+            userData.added=true;
+        }
+
+
+
+        recyclerView1 = (RecyclerView) findViewById(R.id.my_recycler_view1);
+        recyclerView1.setHasFixedSize(true);
+        layoutManager1 = new LinearLayoutManager(this);
+        recyclerView1.setLayoutManager(layoutManager1);
+        recyclerView1.setAdapter(new MyAdapter(userData.getPillData(),1));
+        recyclerView2 = (RecyclerView) findViewById(R.id.my_recycler_view2);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this);
+        recyclerView2.setLayoutManager(layoutManager2);
+        recyclerView2.setAdapter(new MyAdapter(userData.getPillData(),2));
+        recyclerView3 = (RecyclerView) findViewById(R.id.my_recycler_view3);
+        recyclerView3.setHasFixedSize(true);
+        layoutManager3 = new LinearLayoutManager(this);
+        recyclerView3.setLayoutManager(layoutManager3);
+        recyclerView3.setAdapter(new MyAdapter(userData.getPillData(),3));
+
+
 
         menu_main=findViewById(R.id.menu_main);
         menu_main.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +62,6 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         menu_calendar=findViewById(R.id.menu_calendar);
         menu_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,22 +89,17 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alert= new AlertDialog.Builder(this);
         alert.setMessage("정말로 종료하시겠습니까?");
-
         alert.setPositiveButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
-
         alert.setNegativeButton("종료", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

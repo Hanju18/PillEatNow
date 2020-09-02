@@ -1,60 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:weightSum="8">
+    android:weightSum="8"
+    tools:context=".MainPage">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_weight="7"/>
+        android:layout_weight="0.7"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:paddingLeft="30dp"
+        android:text="메인"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="3.5"
         android:orientation="horizontal"
-        android:layout_weight="1"
-        android:weightSum="1">
+        android:weightSum="20">
 
-        <ImageView
-            android:id="@+id/menu_main"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EEEDED" />
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_mainclicked"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"
-            android:clickable="true"/>
-        <ImageView
-            android:id="@+id/menu_calendar"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF" />
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_calendar"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"
-            android:clickable="true"/>
-        <ImageView
-            android:id="@+id/menu_pill"
+            android:layout_height="match_parent"
+            android:layout_weight="16"
+            android:background="#EEEDED">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="6dp"
+                        android:text="오늘"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="7dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:paddingLeft="20dp"
+                            android:src="@drawable/circle1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9"
+                            android:gravity="center_vertical"
+                            android:text="오전 9:00"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:paddingLeft="30dp"
+                        android:id="@+id/my_recycler_view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="7dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:paddingLeft="20dp"
+                            android:src="@drawable/circle1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9"
+                            android:gravity="center_vertical"
+                            android:text="오후 12:00"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:paddingLeft="30dp"
+                        android:id="@+id/my_recycler_view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="7dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:paddingLeft="20dp"
+                            android:src="@drawable/circle1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9"
+                            android:gravity="center_vertical"
+                            android:text="오후 6:00"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:paddingLeft="30dp"
+                        android:id="@+id/my_recycler_view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_pill"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"
-            android:clickable="true"/>
-        <ImageView
-            android:id="@+id/menu_setting"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF" />
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_setting"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"
-            android:clickable="true"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EEEDED" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="#E5F4FF"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/pill1_b" />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/pill2_b"/>
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/pill3_b"/>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/menu"
+                android:layout_margin="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/menu_main"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:clickable="true"
+                    android:src="@drawable/menu_mainclicked" />
+
+                <ImageView
+                    android:id="@+id/menu_calendar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:clickable="true"
+                    android:src="@drawable/menu_calendar" />
+
+                <ImageView
+                    android:id="@+id/menu_pill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:clickable="true"
+                    android:src="@drawable/menu_pill" />
+
+                <ImageView
+                    android:id="@+id/menu_setting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:clickable="true"
+                    android:src="@drawable/menu_setting" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>
 

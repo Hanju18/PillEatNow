@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout start;
-    public static UserData userData=new UserData();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         alert.setPositiveButton("취소", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
+            public void onClick(DialogInterface dialog, int which) { }
         });
-
         alert.setNegativeButton("종료", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

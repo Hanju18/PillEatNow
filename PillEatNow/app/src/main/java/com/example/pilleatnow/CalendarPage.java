@@ -1,7 +1,9 @@
 package com.example.pilleatnow;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -57,7 +59,23 @@ public class CalendarPage extends AppCompatActivity {
         });
     }
 
-    public void addPill() {
-        
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alert= new AlertDialog.Builder(this);
+        alert.setMessage("정말로 종료하시겠습니까?");
+        alert.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alert.setNegativeButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+        alert.setTitle("PillEatNow 종료");
+        AlertDialog alert1=alert.create();
+        alert1.show();
     }
 }

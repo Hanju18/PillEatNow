@@ -1,7 +1,9 @@
 package com.example.pilleatnow;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +16,13 @@ public class SettingPage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private String[] myDataset={"약1", "약2", "약3"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_setting);
         Log.d("SettingPage", "OnCreate");
+
+        UserData userData = (UserData) getApplication();
 
         menu_main=findViewById(R.id.menu_main);
         menu_main.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +63,23 @@ public class SettingPage extends AppCompatActivity {
         });
     }
 
-    public void addPill() {
-        
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alert= new AlertDialog.Builder(this);
+        alert.setMessage("정말로 종료하시겠습니까?");
+        alert.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alert.setNegativeButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+        alert.setTitle("PillEatNow 종료");
+        AlertDialog alert1=alert.create();
+        alert1.show();
     }
 }

@@ -5,11 +5,16 @@ import java.io.Serializable;
 public class PillData implements Serializable {
     private int pill_char;
     private String pill_name;
-    private String pill_dosage;
+    private int pill_dosage;
 
-    public int getPill_char() {
-        return pill_char;
+    public PillData(int pill_char, String pill_name, int pill_dosage) {
+        setPill_char(pill_char);
+        setPill_name(pill_name);
+        setPill_dosage(pill_dosage);
     }
+
+    //Getter & Setter
+    public int getPill_char() { return pill_char; }
 
     public void setPill_char(int pill_char) {
         this.pill_char = pill_char;
@@ -21,11 +26,11 @@ public class PillData implements Serializable {
         this.pill_name = pill_name;
     }
 
-    public String getPill_dosage() {
+    public int getPill_dosage() {
         return pill_dosage;
     }
 
-    public void setPill_dosage(String pill_dosage) {
+    public void setPill_dosage(int pill_dosage) {
         this.pill_dosage = pill_dosage;
     }
 }
