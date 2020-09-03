@@ -1,51 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:ignore="MissingClass">
 
-    <LinearLayout
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:clickable="true"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:id="@+id/calendarView"
         android:layout_weight="1"
-        android:weightSum="1">
-        <ImageView
-            android:id="@+id/menu_main"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_main"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"/>
-        <ImageView
-            android:id="@+id/menu_calendar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_calendarclicked"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"/>
-        <ImageView
-            android:id="@+id/menu_pill"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_pill"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"/>
-        <ImageView
-            android:id="@+id/menu_setting"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_setting"
-            android:layout_weight="0.25"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+        app:mcv_selectionColor="#00F"
+        app:mcv_showOtherDates="all"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>
