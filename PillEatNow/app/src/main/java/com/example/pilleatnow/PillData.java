@@ -6,6 +6,9 @@ public class PillData implements Serializable {
     private int pill_char;
     private String pill_name;
     private int pill_dosage;
+    private boolean yesPressed=false;
+    private boolean noPressed=false;
+    private int id;
 
     public PillData(int pill_char, String pill_name, int pill_dosage) {
         setPill_char(pill_char);
@@ -14,6 +17,27 @@ public class PillData implements Serializable {
     }
 
     //Getter & Setter
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setYesPressedPressed() {
+        yesPressed=!yesPressed;
+    }
+    public boolean getYesPressed() {
+        return yesPressed;
+    }
+    public void setNoPressed() {
+        noPressed=!noPressed;
+    }
+    public boolean getNoPressed() {
+        return noPressed;
+    }
+
     public int getPill_char() { return pill_char; }
 
     public void setPill_char(int pill_char) {

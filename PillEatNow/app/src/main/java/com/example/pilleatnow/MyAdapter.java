@@ -23,7 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public ImageView pill_yes, pill_no;
         public TextView pill_name;
         public TextView pill_dos;
-        public boolean yes=false, no=false;
+        public boolean yes, no;
         public MyViewHolder(View v) {
             super(v);
             pill_char=v.findViewById(R.id.pill_char);
@@ -62,9 +62,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 
-    public MyAdapter(List<PillData> myDataset, int myMode) {
-        Log.d("MyAdapter", "mode: "+String.valueOf(myMode));
-        mDataset = myDataset;
+    public MyAdapter(UserData myDataset, int myMode) {
+        if(myMode==1) mDataset = myDataset.morningP;
+        if(myMode==2) mDataset = myDataset.lunchP;
+        if(myMode==3) mDataset = myDataset.dinnerP;
         mode=myMode;
     }
 
@@ -81,36 +82,40 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         PillData pillX=mDataset.get(position);
+        holder.pill_char.setImageResource(pillX.getPill_char());
+        holder.pill_name.setText(mDataset.get(position).getPill_name());
+        if(pillX.getYesPressed()) {
+            holder.yes=true;
+            holder.no=false;
+            holder.pill_yes.setImageResource(R.drawable.pill_yes_c);
+            holder.pill_no.setImageResource(R.drawable.pill_no);
+        }
+        else {
+            holder.yes=false;
+            holder.pill_yes.setImageResource(R.drawable.pill_yes);
+        }
+        if(pillX.getNoPressed()) {
+            holder.no=true;
+            holder.yes=false;
+            holder.pill_yes.setImageResource(R.drawable.pill_yes);
+            holder.pill_no.setImageResource(R.drawable.pill_no_c);
+        }
+        else {
+            holder.no=false;
+            holder.pill_no.setImageResource(R.drawable.pill_no);
+        }
+
+
         if(mode==1) {
-            if(pillX.getPill_dosage()>=2) {
-                Log.d("mode1", mDataset.get(position).getPill_name());
-                holder.pill_char.setImageResource(pillX.getPill_char());
-                holder.pill_name.setText(mDataset.get(position).getPill_name());
-                holder.pill_yes.setImageResource(R.drawable.pill_yes);
-                holder.pill_no.setImageResource(R.drawable.pill_no);
                 holder.pill_dos.setText("아침약");
-            }
         }
         else if(mode==2) {
-            if(pillX.getPill_dosage()>=3) {
-                Log.d("mode2", mDataset.get(position).getPill_name());
-                holder.pill_char.setImageResource(pillX.getPill_char());
-                holder.pill_name.setText(mDataset.get(position).getPill_name());
-                holder.pill_yes.setImageResource(R.drawable.pill_yes);
-                holder.pill_no.setImageResource(R.drawable.pill_no);
                 holder.pill_dos.setText("점심약");
-            }
         }
         else if(mode==3) {
-            if(pillX.getPill_dosage()>=1) {
-                Log.d("mode3", mDataset.get(position).getPill_name());
-                holder.pill_char.setImageResource(pillX.getPill_char());
-                holder.pill_name.setText(mDataset.get(position).getPill_name());
-                holder.pill_yes.setImageResource(R.drawable.pill_yes);
-                holder.pill_no.setImageResource(R.drawable.pill_no);
                 holder.pill_dos.setText("저녁약");
-            }
         }
+        Log.d("Bind", mDataset.get(position).getPill_name());
     }
     @Override
     public int getItemCount() {

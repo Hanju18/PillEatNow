@@ -43,17 +43,10 @@ public class PillPage extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter=new PillAdapter(userData.getPillData());
+        mAdapter=new PillAdapter(userData.getPillData(), this);
         PillAdapter pillAdapter=(PillAdapter) mAdapter;
         delIndex=pillAdapter.getDelIndex();
         recyclerView.setAdapter(mAdapter);
-        if(delIndex!=-1) {
-            delPill(delIndex);
-            pillAdapter.resetDelIndex();
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }
 
         //약 추가
         add_pill=findViewById(R.id.add_pill);
@@ -152,6 +145,18 @@ public class PillPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PillAdapter pillAdapter=(PillAdapter) mAdapter;
+        delIndex=pillAdapter.getDelIndex();
+        if(delIndex!=-1) {
+            Log.d("PillPage", "deleted");
+            delPill(delIndex);
+            pillAdapter.resetDelIndex();
+        }
     }
 
     public void addPill(int pill_char, String pill_name, int pill_dosage) {

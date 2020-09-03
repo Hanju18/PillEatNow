@@ -1,6 +1,9 @@
 package com.example.pilleatnow;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import java.util.List;
 public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> {
     private List<PillData> mDataset;
     private static int delIndex=-1;
+    Context mContext;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView pill_char;
@@ -44,8 +48,9 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> 
     public void resetDelIndex() {
         delIndex=-1;
     }
-    public PillAdapter(List<PillData> myDataset) {
+    public PillAdapter(List<PillData> myDataset, Context context) {
         mDataset = myDataset;
+        mContext=context;
     }
 
     @Override
@@ -59,12 +64,35 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         PillData pillX=mDataset.get(position);
         Log.d("mode1", mDataset.get(position).getPill_name());
         holder.pill_char.setImageResource(pillX.getPill_char());
         holder.pill_name.setText(mDataset.get(position).getPill_name());
         holder.del_pill.setImageResource(R.drawable.del_pill);
+        holder.del_pill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle("삭제");
+                builder.setMessage("해당 약을 삭제하시겠습니까?");
+                builder.setPositiveButton("예",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                mDataset.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, mDataset.size());
+}
+                        });
+                builder.setNegativeButton("아니오",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                builder.show();
+            }
+        });
         holder.pill_dos.setText(Integer.toString(pillX.getPill_dosage()));
     }
     @Override

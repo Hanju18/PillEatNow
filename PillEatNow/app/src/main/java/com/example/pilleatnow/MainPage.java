@@ -26,30 +26,22 @@ public class MainPage extends AppCompatActivity {
         Log.d("MainPage", "OnCreate");
 
         UserData userData = (UserData) getApplication();
-        if(!userData.added){
-            userData.addPillData(new PillData(R.drawable.pill1, "약1", 1));
-            userData.addPillData(new PillData(R.drawable.pill2, "약2", 2));
-            userData.addPillData(new PillData(R.drawable.pill3, "약3", 3));
-            userData.added=true;
-        }
-
-
 
         recyclerView1 = (RecyclerView) findViewById(R.id.my_recycler_view1);
         recyclerView1.setHasFixedSize(true);
         layoutManager1 = new LinearLayoutManager(this);
         recyclerView1.setLayoutManager(layoutManager1);
-        recyclerView1.setAdapter(new MyAdapter(userData.getPillData(),1));
+        recyclerView1.setAdapter(new MyAdapter(userData,1));
         recyclerView2 = (RecyclerView) findViewById(R.id.my_recycler_view2);
         recyclerView2.setHasFixedSize(true);
         layoutManager2 = new LinearLayoutManager(this);
         recyclerView2.setLayoutManager(layoutManager2);
-        recyclerView2.setAdapter(new MyAdapter(userData.getPillData(),2));
+        recyclerView2.setAdapter(new MyAdapter(userData,2));
         recyclerView3 = (RecyclerView) findViewById(R.id.my_recycler_view3);
         recyclerView3.setHasFixedSize(true);
         layoutManager3 = new LinearLayoutManager(this);
         recyclerView3.setLayoutManager(layoutManager3);
-        recyclerView3.setAdapter(new MyAdapter(userData.getPillData(),3));
+        recyclerView3.setAdapter(new MyAdapter(userData,3));
 
 
 
