@@ -26,7 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5.8"
+        android:background="#EEEDED"
+        android:layout_margin="10dp"
         >
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </ListView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

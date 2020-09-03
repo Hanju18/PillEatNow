@@ -10,19 +10,54 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SettingPage extends AppCompatActivity {
     private ImageView menu_main, menu_calendar, menu_pill, menu_setting;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<HashMap<String, String>> Data=new ArrayList<>();
+    ListView listview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_setting);
         Log.d("SettingPage", "OnCreate");
-
+        listview=(ListView)findViewById(R.id.listview);
         UserData userData = (UserData) getApplication();
+
+        //설정 메뉴
+        HashMap<String, String> InputData= new HashMap<>();
+        InputData.put("title", "설정 내용");
+        InputData.put("text", "설명");
+        Data.add(InputData);
+
+        HashMap<String, String> InputData1= new HashMap<>();
+        InputData1.put("title", "계정 설정");
+        InputData1.put("text", "계정을 관리합니다.");
+        Data.add(InputData1);
+
+        HashMap<String, String> InputData2= new HashMap<>();
+        InputData2.put("title", "푸시 알림 설정");
+        InputData2.put("text", "알림 시간, 방법 등을 설정합니다.");
+        Data.add(InputData2);
+
+        HashMap<String, String> InputData3= new HashMap<>();
+        InputData3.put("title", "테마 설정");
+        InputData3.put("text", "테마를 설정합니다.");
+        Data.add(InputData3);
+
+
+
+
+        //^설정 추가^
+        SimpleAdapter simpleAdapter=new SimpleAdapter(this, Data
+                , android.R.layout.simple_list_item_2
+                , new String[] {"title", "text"}
+                , new int[]{android.R.id.text1, android.R.id.text2});
+        listview.setAdapter(simpleAdapter);
 
         menu_main=findViewById(R.id.menu_main);
         menu_main.setOnClickListener(new View.OnClickListener() {

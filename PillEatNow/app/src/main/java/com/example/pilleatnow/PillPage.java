@@ -25,13 +25,11 @@ public class PillPage extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ImageView add_pill;
-    int pill_charX, pill_dosageX;
+    int pill_charX, pill_dosageX, pill_stockX;
     String pill_nameX;
     RadioGroup rgPill;
     RadioButton rbPill1, rbPill2, rbPill3;
-    EditText etPillName;
-    EditText etPillDosage;
-    int delIndex;
+    EditText etPillName, etPillDosage, etPillStock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +41,7 @@ public class PillPage extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter=new PillAdapter(userData.getPillData(), this);
-        PillAdapter pillAdapter=(PillAdapter) mAdapter;
-        delIndex=pillAdapter.getDelIndex();
+        mAdapter=new PillAdapter(userData, this);
         recyclerView.setAdapter(mAdapter);
 
         //약 추가
@@ -65,6 +61,8 @@ public class PillPage extends AppCompatActivity {
                                 rbPill3=(RadioButton) dialog_layout.findViewById(R.id.rbPill3);
                                 etPillName=(EditText) dialog_layout.findViewById(R.id.etPillName);
                                 etPillDosage=(EditText) dialog_layout.findViewById(R.id.etPillDosage);
+                                etPillStock=(EditText) dialog_layout.findViewById(R.id.etPillStock);
+
                                 if(rbPill1.isChecked()) pill_charX=R.drawable.pill1;
                                 else if(rbPill2.isChecked()) pill_charX=R.drawable.pill2;
                                 else pill_charX=R.drawable.pill3;
@@ -76,17 +74,21 @@ public class PillPage extends AppCompatActivity {
                                 else if(etPillName.getText().toString().equals("")){
                                     Toast.makeText(getApplicationContext(), "약 이름을 입력하세요.", Toast.LENGTH_SHORT).show();
                                 }
+                                else if(etPillStock.getText().toString().equals("")){
+                                    Toast.makeText(getApplicationContext(), "약 재고를 입력하세요.", Toast.LENGTH_SHORT).show();
+                                }
                                 else {
 
                                     Log.d("PillPage addPill", "Pos");
                                     pill_nameX=etPillName.getText().toString();
+                                    pill_stockX=Integer.parseInt(etPillStock.getText().toString());
                                     if(!etPillDosage.getText().toString().equals(""))
                                         pill_dosageX=Integer.parseInt(etPillDosage.getText().toString());
                                     else pill_dosageX=3;
                                     Toast.makeText(getApplicationContext(),
                                             "약 "+pill_nameX+"가 추가되었습니다.",
                                             Toast.LENGTH_SHORT).show();
-                                    addPill(pill_charX, pill_nameX, pill_dosageX);
+                                    addPill(pill_charX, pill_nameX, pill_dosageX, pill_stockX);
                                     dialog.dismiss();
                                     Intent intent = getIntent();
                                     finish();
@@ -147,23 +149,11 @@ public class PillPage extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        PillAdapter pillAdapter=(PillAdapter) mAdapter;
-        delIndex=pillAdapter.getDelIndex();
-        if(delIndex!=-1) {
-            Log.d("PillPage", "deleted");
-            delPill(delIndex);
-            pillAdapter.resetDelIndex();
-        }
-    }
 
-    public void addPill(int pill_char, String pill_name, int pill_dosage) {
-        PillData pillData= new PillData(pill_char, pill_name, pill_dosage);
+    public void addPill(int pill_char, String pill_name, int pill_dosage, int pill_stock) {
         Log.d("PillPage addPill", "Char: "+pill_char+"\tName: "+pill_name+"\tDosage: "+pill_dosage);
         UserData userData = (UserData) getApplication();
-        userData.addPillData(pillData);
+        userData.addPillData(pill_char, pill_name, pill_dosage, pill_stock);
     }
 
     public void delPill(int index) {

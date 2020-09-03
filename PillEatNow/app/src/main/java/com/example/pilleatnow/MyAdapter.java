@@ -115,7 +115,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         else if(mode==3) {
                 holder.pill_dos.setText("저녁약");
         }
-        Log.d("Bind", mDataset.get(position).getPill_name());
     }
     @Override
     public int getItemCount() {

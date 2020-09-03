@@ -6,25 +6,38 @@ public class PillData implements Serializable {
     private int pill_char;
     private String pill_name;
     private int pill_dosage;
+
+
+    private int pill_stock;
     private boolean yesPressed=false;
     private boolean noPressed=false;
     private int id;
 
-    public PillData(int pill_char, String pill_name, int pill_dosage) {
+    public PillData(int id, int pill_char, String pill_name, int pill_dosage, int pill_stock) {
+        setId(id);
         setPill_char(pill_char);
         setPill_name(pill_name);
         setPill_dosage(pill_dosage);
+        setPill_stock(pill_stock);
     }
 
     //Getter & Setter
     public void setId(int id) {
         this.id = id;
     }
-
     public int getId() {
         return id;
     }
 
+    public int getPill_stock() {
+        return pill_stock;
+    }
+    public void setPill_stock(int pill_stock) {
+        this.pill_stock = pill_stock;
+    }
+    public void addPill_stock(int addition) {
+        pill_stock+=addition;
+    }
     public void setYesPressedPressed() {
         yesPressed=!yesPressed;
     }
