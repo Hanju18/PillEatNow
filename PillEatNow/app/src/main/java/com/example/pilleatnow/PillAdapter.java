@@ -75,8 +75,9 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> 
                                     int addition=Integer.parseInt(et.getText().toString());
                                     mDataset.get(position).addPill_stock(addition);
                                     Toast.makeText(mContext,
-                                            "약 "+mDataset.get(position).getPill_name()+"가"+addition+"정 추가되었습니다.",
+                                            mDataset.get(position).getPill_name()+"가 "+addition+"정 추가되었습니다.",
                                             Toast.LENGTH_SHORT).show();
+                                    notifyItemChanged(position);
                                     dialog.dismiss();
                                 }
                             }

@@ -29,10 +29,6 @@ public class SettingPage extends AppCompatActivity {
         UserData userData = (UserData) getApplication();
 
         //설정 메뉴
-        HashMap<String, String> InputData= new HashMap<>();
-        InputData.put("title", "설정 내용");
-        InputData.put("text", "설명");
-        Data.add(InputData);
 
         HashMap<String, String> InputData1= new HashMap<>();
         InputData1.put("title", "계정 설정");
