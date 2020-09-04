@@ -66,14 +66,14 @@
         android:layout_weight="30"/>
     <ImageView
         android:layout_weight="5"
-        android:layout_gravity="right"
+        android:gravity="right"
         android:id="@+id/add_stock"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:paddingTop="10dp" />
     <ImageView
         android:layout_weight="5"
-        android:layout_gravity="left"
+        android:gravity="left"
         android:id="@+id/del_pill"
         android:layout_width="30dp"
         android:layout_height="30dp"

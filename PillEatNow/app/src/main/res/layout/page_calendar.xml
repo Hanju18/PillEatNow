@@ -26,7 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:background="#EEEDED"
         android:orientation="vertical"
         android:layout_margin="10dp"
         >
@@ -38,12 +37,19 @@
             app:mcv_selectionColor="#a9dbf0cb"
             app:mcv_showOtherDates="defaults" />
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#E5F4FF"
-        android:orientation="vertical"/>
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/pillX"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

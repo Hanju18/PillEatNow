@@ -30,8 +30,7 @@ public class OneDayDecorator implements DayViewDecorator {
 
     @Override
     public void decorate(DayViewFacade view) {
-        view.addSpan(new UnderlineSpan());
-        view.addSpan(new RelativeSizeSpan(2.0f));
+        view.addSpan(new RelativeSizeSpan(1.4f));
     }
 
     public void setDate(Date date) {

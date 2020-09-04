@@ -27,6 +27,5 @@ public class SundayDecorator implements DayViewDecorator {
     @Override
     public void decorate(DayViewFacade view) {
         view.addSpan(new ForegroundColorSpan(Color.RED));
-
     }
 }

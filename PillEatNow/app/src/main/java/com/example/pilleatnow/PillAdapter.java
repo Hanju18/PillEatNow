@@ -2,7 +2,6 @@ package com.example.pilleatnow;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> {
@@ -67,7 +64,7 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.MyViewHolder> 
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setTitle("약 추가");
-                builder.setMessage("추가할 약의 양을 입력해주세요.");
+                builder.setMessage("추가 할 약의 양을 입력해주세요.");
                 final EditText et=new EditText(mContext);
                 builder.setView(et);
                 builder.setPositiveButton("확인",
